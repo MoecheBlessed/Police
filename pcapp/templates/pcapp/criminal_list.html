@@ -1,0 +1,28 @@
+{% extends 'pcapp/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% load static %}
+
+    {% if crimes %}
+
+        <table class="table">
+
+           <tr> <thead><th>Picture</th><th>First Name</th><th>Last Name</th><th>ID_No</th><th>Nationality</th>
+           <th>Offences</th><th>Crime</th><th>Action</th></thead></tr>
+            <tbody>
+
+            {% for crime in crimes %}
+            <tr>
+                <td><img src="{{ crime.picture.url }}" style="height: 100px;width: 100px;"></td><td>{{ crime.first_name }}</td><td>{{ crime.last_name }}</td>
+                <td>{{ crime.ID_no }}</td><td>{{ crime.nationality }}</td><td>{{ crime.offences }}</td><td>{{ crime.crime }}</td>
+                <td><a href="{% url 'pcapp:updatecriminal' crime.pk %}">
+                    <br><button type="button" class="btn btn-primary" >Update</button></a></td>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'pcapp/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% load static %}
+
+    {% if crimes %}
+        <table class="table">
+
+           <tr> <thead><th>OB_no</th><th>First Name</th><th>Last Name</th><th>ID_no</th>
+           <th>Nationality</th><th>Gender</th><th>Age</th><th>Area of stay</th><th>Contacts</th><th>Action</th></thead></tr>
+
+            <tbody>
+            {% for crime in crimes %}
+            <tr>
+               <td>{{ crime.OB_no }}</td><td>{{ crime.first_name }}</td><td>{{ crime.last_name }}</td><td>{{ crime.ID_no }}</td>
+                <td>{{ crime.nationality }}</td><td>{{ crime.gender }}</td><td>{{ crime.age }}</td>
+                <td>{{ crime.area_of_stay }}</td><td>{{ crime.contacts }}</td>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% endif %}
+
+{% endblock %}

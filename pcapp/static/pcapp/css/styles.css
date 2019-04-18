@@ -1,0 +1,26 @@
+body {
+        -webkit-animation: colorchange 30s infinite;
+        animation: colorchange 30s infinite;
+    }
+    @-webkit-keyframes colorchange {
+        0% {background: darkcyan}
+        25% {background: cadetblue}
+        50% {background: lightseagreen}
+        75% {background: darkmagenta}
+        100% {background: gold}
+    }
+    @keyframes colorchange {
+        0% {background: darkcyan}
+        25% {background: cadetblue}
+        50% {background: lightseagreen}
+        75% {background: darkmagenta}
+        100% {background: gold}
+    }
+
+.nav-link {
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+}
+
+.navbar-brand {
+    font-family: 'Satisfy',  cursive;
+}

@@ -1,0 +1,69 @@
+{% extends 'pcapp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row">
+    {% if cases %}
+        {% for case in cases %}
+            <div class="col-md-3">
+            <div class="panel panel-success">
+
+            <h5 class="text-info">
+
+            </h5>
+                <div class="panel-heading">
+                    <h4>{{ case.OB_no }}</h4>
+                </div>
+
+                <div class="panel-body">
+                    <table class="table">
+                        <tr><td>Name: &nbsp{{ case.first_name }}</td></tr>
+                        <tr><td>ID_no: &nbsp;{{ case.ID_no }}</td></tr>
+                        <tr><td>Contacts: &nbsp;{{ case.contacts }}</td></tr>
+                        <tr><td>Nationality: &nbsp;{{ case.nationality }}</td></tr>
+                        <tr><td>Area of stay: &nbsp;{{ case.area_of_stay }}</td></tr>
+                        <tr><td>Status: &nbsp;{{ case.status }}</td></tr>
+                        <tr><td>Section of CPC Offence: &nbsp;{{ case.section_of_CPC_offence }}</td></tr>
+                        <tr><td>Investigating Officer: &nbsp;{{ case.investigating_officer }}</td></tr>
+                        <tr><td>Date and Time: &nbsp;{{ case.date_and_time }}</td></tr>
+
+                    </table>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal-{{ case.id }}">Details</button>
+                </div>
+
+            </div>
+
+            <!-- Modal -->
+<div class="modal fade" id="modal-{{ case.id }}" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">{{ case.OB_no }}</h4>
+          <tr><td>Section of CPC Offence: &nbsp;{{ case.section_of_CPC_offence }}</td></tr>
+      </div>
+      <div class="modal-body">
+        <p>{{ case.description_of_crime }}.</p>
+      </div>
+      <div class="modal-footer">
+          <a href="{% url 'pcapp:update' case.pk %}">
+              <button type="submit" class="btn btn-primary">Update</button>
+          </a>
+
+          <a href="{% url 'pcapp:addcriminal' case.pk %}" >
+               <button type="button" class="btn btn-success">Add Criminal</button>
+          </a>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

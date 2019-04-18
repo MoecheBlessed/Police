@@ -1,0 +1,17 @@
+{% extends 'pcapp/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+    <div class="col-sm-4">
+
+    <form  class="" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </form>
+    </div>
+    </div>
+
+{% endblock %}

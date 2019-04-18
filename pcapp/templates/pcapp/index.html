@@ -1,0 +1,66 @@
+{% extends 'pcapp/base.html' %}
+{% block title %}Linda Nchi{% endblock %}
+
+{% block content %}
+<div class="row">
+    {% if cases %}
+        {% for case in cases %}
+            <div class="col-sm-3">
+            <div class="card card-body my-1">
+                <h3 style="color: black;text-align: center; font-family: Merriweather">Record:&nbsp;{{ case.record }}</h3>
+
+            <div class="table-responsive">
+            <table class="table ">
+                <tr>
+                    <td>Nature: {{ case.nature_of_crime }}</td>
+                </tr>
+                <tr>
+                    <td>Status: {{ case.status }}</td><td>Officer: {{ case.investigating_officer }}</td>
+                </tr>
+                <tr>
+                    <td>{{ case.section_of_CPC_offence }}</td></tr>
+            </table>
+            </div>
+
+                <div class="caption">
+                    <h6 class="text-center" style="font-family: 'Droid Sans';">{{ case.date_and_time|date:"F d, Y" }}</h6>
+                    <a href="{% url 'pcapp:update' case.id %}" class="btn btn-primary btn-sm" style="float: right;"><i class="fas fa-edit"></i> </a>
+
+                    <!-- Trigger the modal with a button -->
+                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-{{ case.id }}"><i class="fas fa-info"></i> </button>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal-{{ case.id }}" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header" style="padding:5px 5px;">
+                                    <h4 class="text-center" style="color: darkslategrey; font-family: 'Fira Code';"><b>{{ case.record }}&nbsp;</b></h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p style="font-family: FreeSerif;">Description ::  {{ case.description_of_crime }}<p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="{% url 'pcapp:addcriminal' case.pk %}" class="btn btn-primary btn-sm" style="float:left;"><i class="fas fa-plus"></i> </></a>
+                                     <a href="" class="btn btn-warning btn-sm" style="float: right;" data-dismiss="modal" ><i class="fas fa-times-circle"></i> </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
