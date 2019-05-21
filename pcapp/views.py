@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth import login,  authenticate, logout
 from . models import Record, Criminal, Staff, Crime

@@ -7,7 +7,11 @@
         {% for case in cases %}
             <div class="col-sm-3">
             <div class="card card-body my-1">
-                <h3 style="color: black;text-align: center; font-family: Merriweather">Record:&nbsp;{{ case.record }}</h3>
+                <h3 style="color: black;text-align: center; font-family: Merriweather; white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        max-width: 90%;
+">Record:&nbsp;{{ case.record }}</h3>
 
             <div class="table-responsive">
             <table class="table ">
@@ -44,7 +48,7 @@
                                     <p style="font-family: FreeSerif;">Description ::  {{ case.description_of_crime }}<p>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="{% url 'pcapp:addcriminal' case.pk %}" class="btn btn-primary btn-sm" style="float:left;"><i class="fas fa-plus"></i> </></a>
+                                    <a href="{% url 'pcapp:addcriminal' case.pk %}" class="btn btn-primary btn-sm" style="float:left;"><i class="fas fa-plus"></i> </a>
                                      <a href="" class="btn btn-warning btn-sm" style="float: right;" data-dismiss="modal" ><i class="fas fa-times-circle"></i> </a>
                                 </div>
 
